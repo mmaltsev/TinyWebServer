@@ -19,10 +19,10 @@ Make sure to have `HOST`, `PORT` and `ENDPOINTS` specified in the file.
 #### Run Web Server
 Execute `python server.py`.
 
-You should see the message `Tiny Web Server is up at HOST:PORT`, where `HOST` and `PORT` are those specified in the `config.json` file.
+You should see the message `Tiny Web Server is up at HOST:PORT` in the console, where `HOST` and `PORT` are those specified in the `config.json` file.
 
 #### Request Data
-If the server was executed with the default configurations, navigate to `http://0.0.0.0:8080/example`.
+If the server was executed with the default configurations, navigate to `http://0.0.0.0:8080/example` (by default, `HOST` is `'0.0.0.0'` and `PORT` is `'8080'`).
 
 You should see there a dummy JSON file served at the `/example` endpoint.
 ```JSON
