@@ -1,12 +1,22 @@
 # https://gist.github.com/mdonkers/63e115cc0c79b4f6b8b3a6b797e485c7C
 # https://stackoverflow.com/questions/1094185/how-to-serve-any-file-type-with-pythons-basehttprequesthandler
+# Python 3.6
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from os import curdir, sep
+import json
 
-PORT = 8081
+
+def config():
+    with open('config.json') as f:
+        data = json.load(f)
+        return data['HOST'], data['PORT'], data['ENDPOINTS']
+
+
+HOST, PORT, ENDPOINTS = config()
+
 
 def router(path, request_type, post_data=''):
-    if path == '/example' and request_type == 'GET':
+    # if path in ENDPOINTS and request_type == 'POST' or request_type == ENDPOINTS[path]['request_type']:
+    if path == '/example':
         f = open('example.json', 'rb')
         return f.read(), 'application/json'
     return (request_type + ' request for {}'.format(path)).encode('utf-8'), 'text/html'
@@ -32,15 +42,14 @@ class S(BaseHTTPRequestHandler):
 
 
 def run(server_class=HTTPServer, handler_class=S):
-    server_address = ('', PORT)
+    server_address = (HOST, PORT)
     httpd = server_class(server_address, handler_class)
-    print('Starting httpd...')
     try:
+        print('Tiny Web Server is up at {}:{}'.format(HOST, PORT))
         httpd.serve_forever()
     except KeyboardInterrupt:
         pass
     httpd.server_close()
-    print('Stopping httpd...')
 
 
 run()
