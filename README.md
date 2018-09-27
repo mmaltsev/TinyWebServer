@@ -24,14 +24,19 @@ Execute `python server.py`.
 You should see the message `Tiny Web Server is up at HOST:PORT` in the console, where `HOST` and `PORT` are those specified in the `config.json` file.
 
 #### Request Data
-If the server was executed with the default configurations, navigate to `http://0.0.0.0:8080/example` (by default, `HOST` is `'0.0.0.0'` and `PORT` is `'8080'`).
+If the server was executed with the default configurations, navigate to `http://0.0.0.0:8080/one` (by default, `HOST` is `'0.0.0.0'` and `PORT` is `'8080'`).
 
-You should see there a dummy JSON file served at the `/example` endpoint.
+You should see there a dummy JSON file served at the `/one` endpoint.
 ```JSON
 {
-  "one": 1
+    "one": 1
 }
 ```
+
+#### Add New Endpoint
+In order to add more endpoints, please, follow the instructions:
+* edit `config.json` by adding new property to the `ENDPOINTS`. Specify `request_type`, `mime_type` and `method_name`.
+* create a function in the `endpoints.py` by the name `method_name`. Specify endpoint's functionality there.
 
 ## License.
 MIT License. Copyright (c) 2018 Maxim Maltsev.
