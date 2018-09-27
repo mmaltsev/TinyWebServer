@@ -14,7 +14,9 @@ After that, install all required dependencies by executing:
 #### Set Configurations
 Edit `config.json` if needed.
 
-Make sure to have `HOST`, `PORT` and `ENDPOINTS` specified in the file.
+Make sure to have `HOST` and `PORT` specified in the file.
+
+Feel free to edit any of the properties from the configuration file.
 
 #### Run Web Server
 Execute `python server.py`.
