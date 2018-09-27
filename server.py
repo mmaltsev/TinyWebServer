@@ -9,22 +9,23 @@ All functionality is implemented in Python 3.6.
 """
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import endpoints
+import helpers
 
 # Global constants initialization #
-HOST, PORT, ENDPOINTS = endpoints.CONFIG['HOST'], endpoints.CONFIG['PORT'], endpoints.CONFIG['ENDPOINTS']
+HOST, PORT, ENDPOINTS = helpers.CONFIG['HOST'], helpers.CONFIG['PORT'], helpers.CONFIG['ENDPOINTS']
 
 
 def router(path, request_type, post_data=''):
     """Route requests."""
     if path in ENDPOINTS:
         if request_type == 'GET' and ENDPOINTS[path]['request_type'] == 'POST':
-            return endpoints.client_error()
-        endpoint_method_name = path.replace('/', '_')
+            return helpers.client_error()
+        endpoint_method_name = ENDPOINTS[path]['method_name']
         endpoint_method = getattr(endpoints, endpoint_method_name)
         return endpoint_method()
     else:
-        return endpoints.static(path)
-    return endpoints.server_error()
+        return helpers.static(path)
+    return helpers.server_error()
 
 
 class S(BaseHTTPRequestHandler):
@@ -44,7 +45,7 @@ class S(BaseHTTPRequestHandler):
 
     def do_POST(self):
         """Handle POST requests."""
-        content_length = int(self.headers['Content-Length'])  # size of data
+        content_length = int(self.headers['Content-Length'])  # size of the data
         post_data = self.rfile.read(content_length)  # data itself
         response_data, mime_type, status_code = router(self.path, 'POST', post_data)
         self._set_response(mime_type, status_code)
