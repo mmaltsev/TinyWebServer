@@ -4,11 +4,18 @@
   "ENDPOINTS": { 
     "/": {
       "request_type": "GET",
-      "mime_type": "text/html"
+      "mime_type": "text/html",
+      "method_name": "_"
     },
-    "/example": {
-      "request_type": "POST",
-      "mime_type": "application/json"
+    "/one": {
+      "request_type": "GET",
+      "mime_type": "application/json",
+      "method_name": "_one"
+    },
+    "/two": {
+      "request_type": "GET",
+      "mime_type": "application/json",
+      "method_name": "_two"
     }
   },
   "404": "<style>h1, h4 {text-align: center;}</style><h1>404</h1><p><h4>The page could not be found</h4>",
