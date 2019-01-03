@@ -35,6 +35,7 @@ class S(BaseHTTPRequestHandler):
         """Send response and headers."""
         self.send_response(status_code)
         self.send_header('Content-type', mime_type)
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
 
     def do_GET(self):
