@@ -16,6 +16,26 @@
       "request_type": "GET",
       "mime_type": "application/json",
       "method_name": "_two"
+    },
+    "/parking": {
+      "request_type": "GET",
+      "mime_type": "application/json",
+      "method_name": "_parking"
+    },
+    "/geojson": {
+      "request_type": "GET",
+      "mime_type": "application/json",
+      "method_name": "_geojson"
+    },
+    "/swisscities": {
+      "request_type": "GET",
+      "mime_type": "text/csv",
+      "method_name": "_swisscities"
+    },
+    "/smoke": {
+      "request_type": "GET",
+      "mime_type": "image/gif",
+      "method_name": "_smoke"
     }
   },
   "404": "<style>h1, h4 {text-align: center;}</style><h1>404</h1><p><h4>The page could not be found</h4>",

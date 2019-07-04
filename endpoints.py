@@ -32,3 +32,19 @@ def _two():
     json_data = json.dumps(dict_data, indent=4, separators=(',', ': '))
     bytes_data = json_data.encode('utf-8')
     return bytes_data, helpers.mime_type_map('json'), helpers.STATUS_CODES['success']
+
+def _parking():
+    file_path = 'data/parking.json'
+    return helpers.request(file_path)
+
+def _geojson():
+    file_path = 'data/neues_tor.geojson'
+    return helpers.request(file_path)
+
+def _swisscities():
+    file_path = 'data/swisscities.csv'
+    return helpers.request(file_path)
+
+def _smoke():
+    file_path = 'data/smoke.gif'
+    return helpers.request(file_path)
